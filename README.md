@@ -1,44 +1,7 @@
-# Gobot Store Redis
+# Redis Store for botopolis
 
-For use with bot
+Provides a Redis backend to botopolis' Brain
 
-## Basic usage
+## Usage
 
-```go
-package main
-
-import(
-	"github.com/botopolis/bot"
-	"github.com/botopolis/redis"
-)
-
-func main() {
-	// define adapter
-	robot := bot.New(adapter)
-
-	robot.Install(
-		redis.Plugin,
-	)
-}
-```
-
-## Customized configuration options
-
-```go
-package main
-
-import(
-	"github.com/botopolis/bot"
-	"github.com/botopolis/redis"
-)
-
-func main() {
-	// define adapter
-	store := redis.New(os.Getenv("REDIS_URL))
-	robot := bot.New(adapter)
-
-	robot.Install(
-    store.Plugin,
-	)
-}
-```
+For usage see [example](./example_test.go)
