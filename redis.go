@@ -1,13 +1,13 @@
 package redis
 
 import (
-	"github.com/berfarah/gobot"
+	"github.com/botopolis/bot"
 	"github.com/go-redis/cache"
 	"github.com/go-redis/redis"
 	"github.com/vmihailenco/msgpack"
 )
 
-// Store conforms to the gobot.Store interface
+// Store conforms to the bot.Store interface
 // It uses msgpack to cache records in Redis
 type Store struct {
 	redis *redis.Client
@@ -47,8 +47,8 @@ func (s *Store) Delete(key string) error {
 	return s.cache.Delete(key)
 }
 
-// Load installs this store as a gobot.Plugin
-func (s *Store) Load(r *gobot.Robot) { r.Brain.SetStore(s) }
+// Load installs this store as a bot.Plugin
+func (s *Store) Load(r *bot.Robot) { r.Brain.SetStore(s) }
 
 // Unload disconnects from Redis
-func (s *Store) Unload(r *gobot.Robot) { s.redis.Close() }
+func (s *Store) Unload(r *bot.Robot) { s.redis.Close() }

@@ -3,15 +3,14 @@ package redis_test
 import (
 	"os"
 
-	"github.com/berfarah/gobot"
-	"github.com/berfarah/gobot-slack"
-	"github.com/berfarah/gobot-store-redis"
+	"github.com/botopolis/bot"
+	"github.com/botopolis/redis"
+	"github.com/botopolis/slack"
 )
 
 func Example() {
-	robot := gobot.New(slack.New("secret"))
-	robot.Install(
+	bot.New(
+		slack.New("secret"),
 		redis.New(os.Getenv("REDIS_URL")),
-	)
-	robot.Run()
+	).Run()
 }

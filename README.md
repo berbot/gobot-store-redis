@@ -1,6 +1,6 @@
 # Gobot Store Redis
 
-For use with gobot
+For use with bot
 
 ## Basic usage
 
@@ -8,13 +8,13 @@ For use with gobot
 package main
 
 import(
-	"github.com/berfarah/gobot"
-	"github.com/berfarah/gobot-store-redis"
+	"github.com/botopolis/bot"
+	"github.com/botopolis/redis"
 )
 
 func main() {
 	// define adapter
-	robot := gobot.New(adapter)
+	robot := bot.New(adapter)
 
 	robot.Install(
 		redis.Plugin,
@@ -28,14 +28,14 @@ func main() {
 package main
 
 import(
-	"github.com/berfarah/gobot"
-	"github.com/berfarah/gobot-store-redis"
+	"github.com/botopolis/bot"
+	"github.com/botopolis/redis"
 )
 
 func main() {
 	// define adapter
 	store := redis.New(os.Getenv("REDIS_URL))
-	robot := gobot.New(adapter)
+	robot := bot.New(adapter)
 
 	robot.Install(
     store.Plugin,
