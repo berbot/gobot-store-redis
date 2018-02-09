@@ -4,13 +4,13 @@ import (
 	"os"
 
 	"github.com/botopolis/bot"
+	"github.com/botopolis/bot/mock"
 	"github.com/botopolis/redis"
-	"github.com/botopolis/slack"
 )
 
 func Example() {
 	bot.New(
-		slack.New("secret"),
+		mock.NewChat(),
 		redis.New(os.Getenv("REDIS_URL")),
 	).Run()
 }
