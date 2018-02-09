@@ -1,6 +1,8 @@
 package redis
 
 import (
+	"net/url"
+
 	"github.com/botopolis/bot"
 	"github.com/go-redis/cache"
 	"github.com/go-redis/redis"
@@ -17,7 +19,11 @@ type Store struct {
 // New allows for configuration of the redis plugin with a
 // custom address
 func New(address string) *Store {
-	redis := redis.NewClient(&redis.Options{Addr: address})
+	url, err := url.Parse(address)
+	if err != nil {
+		panic(err)
+	}
+	redis := redis.NewClient(&redis.Options{Addr: url.Hostname() + ":" + url.Port()})
 	return &Store{
 		redis: redis,
 		cache: &cache.Codec{
